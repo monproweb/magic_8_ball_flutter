@@ -40,45 +40,31 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
-      body: const BallPage(),
+      body: const Ball(),
     );
   }
 }
 
-class BallPage extends StatefulWidget {
-  const BallPage({Key? key}) : super(key: key);
+class Ball extends StatefulWidget {
+  const Ball({Key? key}) : super(key: key);
 
   @override
-  _BallPageState createState() => _BallPageState();
+  _BallState createState() => _BallState();
 }
 
-class _BallPageState extends State<BallPage> {
+class _BallState extends State<Ball> {
   int ballNumber = 1;
-
-  void changeBallAnswer() {
-    setState(() {
-      ballNumber = Random().nextInt(5) + 1;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: TextButton(
-              child: Image.asset(
-                'images/ball$ballNumber.png',
-              ),
-              onPressed: () {
-                changeBallAnswer();
-                // ignore: avoid_print
-                print('I got clicked');
-              },
-            ),
-          ),
-        ],
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            ballNumber = Random().nextInt(5) + 1;
+          });
+        },
+        child: Image.asset('images/ball$ballNumber.png'),
       ),
     );
   }
