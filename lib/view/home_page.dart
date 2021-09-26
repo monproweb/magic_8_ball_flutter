@@ -73,6 +73,8 @@ class _BallPageState extends State<BallPage> {
               ),
               onPressed: () {
                 changeBallAnswer();
+                // ignore: avoid_print
+                print('I got clicked');
               },
             ),
           ),
